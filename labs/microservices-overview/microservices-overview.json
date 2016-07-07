@@ -1,0 +1,31 @@
+{
+    "labId": "microservices-overview",
+    "title": "Microservices Overview",
+    "slug": "Learn about microservices, containers, and cloud native applications",
+    "time": "30",
+    "tags": [{
+        "title": "cloud"
+    }, {
+        "title": "microservices"
+    }, {
+        "title": "containers"
+    }, {
+        "title": "cloud native"
+    }, {
+        "title": "beginner"
+    }],
+    "files": [{
+        "title": "1.md"
+    }, {
+        "title": "2.md"
+    }],
+    "related": [{
+        "labId": "mantl-app",
+        "title": "Mantl: Deploying applications into Marathon"
+    }],
+    "authors": [{
+        "name": "Ashley Roach",
+        "email": "asroach@cisco.com"
+    }],
+    "active": true
+}
