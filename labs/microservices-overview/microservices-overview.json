@@ -20,13 +20,22 @@
         "title": "2.md"
     }],
     "related": [{
-        "labId": "mantl-app",
-        "title": "Mantl: Deploying applications into Marathon"
-    }],
+        "labId": "containers-101",
+        "title": "Just what are containers anyway?."
+    },{
+        "labId": "docker-101",
+        "title": "Docker: Building and deploying your first docker container."
+    },{
+        "labId": "kubernetes-101",
+        "title": "Kubernetes: Deploying docker containers into a Kubernetes cluster."
+    }
+    ],
     "authors": [{
         "name": "Ashley Roach",
-        "email": "asroach@cisco.com"
-    }],
+        "email": "asroach@cisco.com"}, {
+        "name": "Matt Johnson",
+        "email": "matjohn2@cisco.com"
+        }],
     "byod": true,
     "active": true
 }
