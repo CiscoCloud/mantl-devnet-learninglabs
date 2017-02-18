@@ -12,6 +12,8 @@
     }],
     "files": [{
         "title": "1.md"
+        }, {
+        "title": "2.md"
     }],
     "related": [{
         "labId": "docker-101",
