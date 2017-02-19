@@ -14,8 +14,6 @@
         "title": "1.md"
         }, {
         "title": "2.md"
-        }, {
-        "title": "3.md"
     }],
     "related": [{
         "labId": "docker-101",
@@ -31,6 +29,6 @@
         "name": "Matt Johnson",
         "email": "matjohn2@cisco.com"
         }],
-    "byod": true,
+    "byod": false,
     "active": true
 }
