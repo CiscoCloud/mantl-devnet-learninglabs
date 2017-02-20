@@ -1,30 +1,33 @@
 {
-    "labId": "Containers-101",
-    "title": "Containers 101",
-    "slug": "The buzzword 'Container', explained.",
-    "time": "10",
+    "labId": "docker-101",
+    "title": "Docker 101",
+    "slug": "Use docker to build and deploy your first container image.",
+    "time": "40",
     "tags": [{
         "title": "Cloud"
+    }, {
+        "title": "Microservices"
     }, {
         "title": "Containers"
     }, {
         "title": "Beginner"
+    }, {
+        "title": "Docker"
     }],
     "files": [{
         "title": "1.md"
-        }, {
+    }, {
         "title": "2.md"
+    }, {
+        "title": "3.md"
+    }, {
+        "title": "4.md"
     }],
     "related": [{
-        "labId": "docker-101",
-        "title": "A deeper look at Containers and deploying your first with Docker."
-        }, {
-        "labId": "microservices-overview",
-        "title": "Containers are not Microservices, but they do go hand in hand! Learn more here."
-        }, {
         "labId": "kubernetes-101",
         "title": "Kubernetes: Deploying docker containers into a Kubernetes cluster."
-    }],
+    }
+    ],
     "authors": [{
         "name": "Matt Johnson",
         "email": "matjohn2@cisco.com"
