@@ -66,39 +66,28 @@ the most popular.
 
 # Installing Docker
 
-The __Docker engine__ runs and manages containers on a host
-machine. The __Docker client tools__ interact with and control the
-Docker engine. Both the Docker engine and the Docker client tools are
-now distributed by default as part of many Linux distributions.
+The docker engine (run's and manages the containers on a host) and the
+docker client tools (allows you to interact with the engine, build,
+run and share docker images) are now in the default package management
+on many linux distributions.
 
-The engine and client tools are also available for download directly
-from [Docker.com](http://www.docker.com).
+You can also download direct for Linux, Mac and Windows from
+[Docker.com](http://www.docker.com) if you are having issues..
 
-For the hands-on sessions in this learning lab we'll use an in-browser
-Docker playground called
-[play-with-docker.com](http://labs.play-with-docker.com/).
 
-play-with-docker.com provides access to a full VM running Docker
-directly in a web browser, making it easy to work with Docker from any
-device.
+However, for these hands on sessions. we'll use an in-browser docker
+playground called play-with-docker.com
 
-1. Open [play-with-docker.com](http://labs.play-with-docker.com/) in a
-   browser.  
+This gives you access to a full VM running Docker, direct from your
+web browser, making demo's really easy regardless of your device!
 
-   play-with-docker.com displays a Captcha dialog to ensure that
-   you're not a robot. Complete the Captcha to continue to
-   play-with-docker.com. play-with-docker displays a session countdown
-   and an __Add New Instance__ button.
+Open [http://play-with-docker.com]() in your browser and click "Add
+New Instance" on the right. You'll then be given a full terminal
+window to the instance which we'll use for the rest of this learning
+lab!
 
-2. Click the __Add New Instance__ button
-   play-with-docker.com creates and displays a terminal session in the
-   browser. The rest of this learning lab uses the in-browser terminal
-   session to work with Docker.  ![Play With Docker
-   Site](/posts/files/docker-101/assets/images/playwithdocker1.png)
-
-3. Request the Docker version
-
-   
+![Play With Docker
+ Site](/posts/files/docker-101/assets/images/playwithdocker1.png)
 
 On this VM, docker has already been installed. You can test this now
 by asking the docker CLI for it's version number..
