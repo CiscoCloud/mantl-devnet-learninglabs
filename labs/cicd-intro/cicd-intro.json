@@ -1,6 +1,6 @@
 {
     "labId": "cicd-intro",
-    "title": "Introduction to CI/CD",
+    "title": "CI/CD Overview",
     "slug": "Automate code changes, testing, packaging and production deployments.",
     "time": "60",
     "tags": [{
