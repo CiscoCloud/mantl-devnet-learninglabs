@@ -1,5 +1,5 @@
 # mantl-devnet-learninglabs
-Self paced interactive Learning Labs for [DevNet Learning Labs](learninglabs.cisco.com).
+Self-paced interactive Learning Labs for [DevNet Learning Labs](https://learninglabs.cisco.com).
 
 ## Mantl: Deploying applications into Marathon
 
