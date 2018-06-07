@@ -1,0 +1,263 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: owncloud-config-claim
+  labels:
+    app: owncloud
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "1Gi"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: owncloud-apps-claim
+  labels:
+    app: owncloud
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "2Gi"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: owncloud-data-claim
+  labels:
+    app: owncloud
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "100Gi"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-owncloud-claim
+  labels:
+    app: owncloud
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "10Gi"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: owncloud-configmap
+  labels:
+    app: owncloud
+data:
+  owc_db_type: mysql
+  owc_db_name: owncloud
+  owc_db_root_user: root
+  owc_admin_user: admin
+  # NB: This is the ip address, or name, of a domain that ownCloud will allow
+  # users to log in to the web interface from. Once the application is
+  # running additional domains can be added either via the web interface or
+  # 'php occ' tool
+  # https://doc.owncloud.org/server/latest/admin_manual/search.html?q=trusted_domain
+  # On GKE this should be the IP address that you reserved,
+  # e.g. with 'gcloud compute addresses create --region='your_region'  owncloud
+  owc_trusted_ip: 0.0.0.0
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: owncloud
+  labels:
+    app: owncloud
+type: Opaque
+data:
+  # Create these password by running
+  # echo -n "your_password_here" | base64
+  # demopassword
+  mariadb_root_password: ZGVtb3Bhc3N3b3Jk
+  owncloud_admin_password: ZGVtb3Bhc3N3b3Jk
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: owncloud
+  labels:
+    app: owncloud
+spec:
+  selector:
+    app: owncloud
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: owncloud-dockerhub
+  labels:
+    app: owncloud
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: owncloud
+    spec:
+      volumes:
+      - name: config-store
+        persistentVolumeClaim:
+          claimName: owncloud-config-claim
+      - name: data-store
+        persistentVolumeClaim:
+          claimName: owncloud-data-claim
+      - name: app-store
+        persistentVolumeClaim:
+          claimName: owncloud-apps-claim
+      - name: mdata-store
+        persistentVolumeClaim:
+          claimName: mariadb-owncloud-claim
+
+      containers:
+      - name: mariadb
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: owncloud
+              key: mariadb_root_password
+        image: mariadb:10.1
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mdata-store
+          mountPath: /var/lib/mysql
+
+      - name: owncloud
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: owncloud
+              key: mariadb_root_password
+        - name: OWC_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: owncloud
+              key: owncloud_admin_password
+        - name: OWC_DB_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: owncloud-configmap
+              key: owc_db_type
+        - name: OWC_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: owncloud-configmap
+              key: owc_db_name
+        - name: OWC_DB_ROOT_USER
+          valueFrom:
+            configMapKeyRef:
+              name: owncloud-configmap
+              key: owc_db_root_user
+        - name: OWC_ADMIN_USER
+          valueFrom:
+            configMapKeyRef:
+              name: owncloud-configmap
+              key: owc_admin_user
+        - name: OWC_TRUSTED_IP
+          valueFrom:
+            configMapKeyRef:
+              name: owncloud-configmap
+              key: owc_trusted_ip
+
+        image: owncloud:9.1
+        ports:
+        - containerPort: 80
+
+        volumeMounts:
+        - name: config-store
+          mountPath: /var/www/html/config
+        - name: data-store
+          mountPath: /var/www/html/data
+        - name: app-store
+          mountPath: /var/www/html/apps
+
+        command:
+        - bash
+        - "-c"
+        - |
+          # Enable bash debug tracing and blow up if any command fails
+          set -ex
+
+          # In order to get this running successfully in k8's what we'll do is essentially
+          # copy the normal Docker startup process. Which is essentially to untar owncloud
+          # into a apache install and then fire up apache. But instead of the untar and then
+          # immediately firing up apache, we'll inject the necessary setup to get things
+          # playing nicely in k8's.
+
+          # Extracted from the Owncloud Docker image with a docker inspect owncloud:9.1
+          OWC_DOCKER_WORKING_DIR=/var/www/html
+          OWC_DOCKER_ENTRYPOINT=/entrypoint.sh
+          OWC_DOCKER_CMD=apache2-foreground
+
+          # Some of the files need to have specific perms and some of the commands
+          # are best executed as the www user in order that things work nicely
+          OWC_DOCKER_USER=www-data
+          OWC_DOCKER_GROUP=nogroup
+          # No sudo installed, so need to emulate
+          SU_CMD_STEM="su --login www-data --shell /bin/sh --command "
+
+
+          # Perform default Owncloud Docker intialisation because we've overridden it
+          # and we need it in in place before we can do a command line installation.
+          # (this does untar etc on the owncloud install)
+          cd $OWC_DOCKER_WORKING_DIR
+          $OWC_DOCKER_ENTRYPOINT
+
+          # Check we have got what looks like a working owncloud install after running the entrypoint
+          $SU_CMD_STEM "which php"
+          ls occ
+
+          # Now we tailor the installation to run under kubernetes. Some of this we only want to
+          # do once, as the Owncloud will tailor the settings itself and we do not want to
+          # stamp on those. Others we need to do every time because they are specific to the
+          # pod instance.
+
+          RUN_BEFORE_FLAG_FILE=config/k8initialised.touch
+          num_trusted_domains=0
+          if [[ -f  $RUN_BEFORE_FLAG_FILE ]]; then
+            # Then the disk has already been set up.
+            echo INFO Owncloud initialised on this volume, not running config setup again.
+          else
+            echo INFO Initialising Owncloud on this volume.
+
+            # Fix broken ownership from the install on data (comes out as root otherwise)
+            chown --recursive $OWC_DOCKER_USER:$OWC_DOCKER_GROUP data
+
+            # Invoke Owncloud's command line installation tools to add DB, trusted_domain etc.
+            $SU_CMD_STEM "cd $OWC_DOCKER_WORKING_DIR && php occ maintenance:install --database $OWC_DB_TYPE --database-host 127.0.0.1 --database-name $OWC_DB_NAME  --database-user $OWC_DB_ROOT_USER --database-pass $MYSQL_ROOT_PASSWORD  --admin-user $OWC_ADMIN_USER --admin-pass $OWC_ADMIN_PASSWORD"
+
+            # Add a file so that we do not run the same set up again and stamp
+            # on the existing setup
+            touch   $RUN_BEFORE_FLAG_FILE
+          fi
+
+          # Add trusted_domains so that can access with Owncloud
+          $SU_CMD_STEM "cd $OWC_DOCKER_WORKING_DIR &&  php occ config:system:set trusted_domains $num_trusted_domains --value=$(OWC_TRUSTED_IP)"
+          num_trusted_domains=`expr $num_trusted_domains + 1`
+
+          #Fire off the normal Docker startup
+          $OWC_DOCKER_CMD
