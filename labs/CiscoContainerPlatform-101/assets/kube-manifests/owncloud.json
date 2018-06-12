@@ -1,34 +1,6 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: owncloud-config-claim
-  labels:
-    app: owncloud
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: "1Gi"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: owncloud-apps-claim
-  labels:
-    app: owncloud
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: "2Gi"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
   name: owncloud-data-claim
   labels:
     app: owncloud
@@ -39,20 +11,6 @@ spec:
   resources:
     requests:
       storage: "100Gi"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mariadb-owncloud-claim
-  labels:
-    app: owncloud
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: "10Gi"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -116,20 +74,6 @@ spec:
       labels:
         app: owncloud
     spec:
-      volumes:
-      - name: config-store
-        persistentVolumeClaim:
-          claimName: owncloud-config-claim
-      - name: data-store
-        persistentVolumeClaim:
-          claimName: owncloud-data-claim
-      - name: app-store
-        persistentVolumeClaim:
-          claimName: owncloud-apps-claim
-      - name: mdata-store
-        persistentVolumeClaim:
-          claimName: mariadb-owncloud-claim
-
       containers:
       - name: mariadb
         env:
@@ -141,10 +85,6 @@ spec:
         image: mariadb:10.1
         ports:
         - containerPort: 3306
-        volumeMounts:
-        - name: mdata-store
-          mountPath: /var/lib/mysql
-
       - name: owncloud
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -182,19 +122,9 @@ spec:
             configMapKeyRef:
               name: owncloud-configmap
               key: owc_trusted_ip
-
-        image: owncloud:9.1
+        image: owncloud:10.0.8-fpm
         ports:
         - containerPort: 80
-
-        volumeMounts:
-        - name: config-store
-          mountPath: /var/www/html/config
-        - name: data-store
-          mountPath: /var/www/html/data
-        - name: app-store
-          mountPath: /var/www/html/apps
-
         command:
         - bash
         - "-c"
@@ -243,7 +173,10 @@ spec:
             echo INFO Owncloud initialised on this volume, not running config setup again.
           else
             echo INFO Initialising Owncloud on this volume.
-
+            echo Making DIRs
+            mkdir -p /var/www/html/apps
+            mkdir -p /var/www/html/data
+            mkdir -p /var/www/html/config
             # Fix broken ownership from the install on data (comes out as root otherwise)
             chown --recursive $OWC_DOCKER_USER:$OWC_DOCKER_GROUP data
 
@@ -256,7 +189,7 @@ spec:
           fi
 
           # Add trusted_domains so that can access with Owncloud
-          $SU_CMD_STEM "cd $OWC_DOCKER_WORKING_DIR &&  php occ config:system:set trusted_domains $num_trusted_domains --value=$(OWC_TRUSTED_IP)"
+          $SU_CMD_STEM "cd $OWC_DOCKER_WORKING_DIR && php occ config:system:set trusted_domains $num_trusted_domains --value=$(OWC_TRUSTED_IP)"
           num_trusted_domains=`expr $num_trusted_domains + 1`
 
           #Fire off the normal Docker startup
