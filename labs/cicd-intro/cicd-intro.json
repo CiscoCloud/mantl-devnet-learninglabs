@@ -1,0 +1,35 @@
+{
+    "labId": "cicd-intro",
+    "title": "CI/CD Overview",
+    "slug": "Automate code changes, testing, packaging and production deployments.",
+    "time": "60",
+    "tags": [{
+        "title": "CICD"
+    }, {
+        "title": "Automation"
+    }, {
+        "title": "Containers"
+    }, {
+        "title": "Beginner"
+    }, {
+        "title": "Docker"
+    }],
+    "files": [{
+        "title": "1.md"
+    }, {
+        "title": "2.md"
+    }, {
+        "title": "3.md"
+    }],
+    "related": [{
+        "labId": "docker-101",
+        "title": "Getting Started with Containers using Docker"
+    }
+    ],
+    "authors": [{
+        "name": "Matt Johnson",
+        "email": "matjohn2@cisco.com"
+        }],
+    "byod": true,
+    "active": true
+}
