@@ -1,0 +1,39 @@
+{
+    "labId": "docker-201",
+    "title": "Docker 201",
+    "slug": "Explore advanced Docker features and become an expert on containers!",
+    "time": "40",
+    "tags": [{
+        "title": "Cloud"
+    }, {
+        "title": "Microservices"
+    }, {
+        "title": "Containers"
+    }, {
+        "title": "Beginner"
+    }, {
+        "title": "Docker"
+    }],
+    "files": [{
+        "title": "1.md"
+    }, {
+        "title": "2.md"
+    }, {
+        "title": "3.md"
+    }, {
+        "title": "4.md"
+    }, {
+        "title": "5.md"
+    }],
+    "related": [{
+        "labId": "docker-101",
+        "title": "Docker 101: Use docker to build and deploy your first container image."
+    }
+    ],
+    "authors": [{
+        "name": "Julio Gomez",
+        "email": "jgomez2@cisco.com"
+        }],
+    "byod": true,
+    "active": true
+}

@@ -1,0 +1,38 @@
+{
+    "labId": "CiscoContainerPlatform-101",
+    "title": "A Hands on introduction to the Cisco Container Platform",
+    "slug": "NEW for Cisco LIVE! US 2018, automatically provision and use a kubernetes cluster with Cisco Container Platform",
+    "time": "30",
+    "tags": [{
+        "title": "Kubernetes"
+    }, {
+        "title": "Automation"
+    }, {
+        "title": "Containers"
+    }, {
+        "title": "Docker"
+    }],
+    "files": [{
+        "title": "1.md"
+    }, {
+        "title": "2.md"
+    }, {
+        "title": "3.md"
+    }, {
+        "title": "4.md"
+    }],
+    "related": [{
+        "labId": "docker-101",
+        "title": "Getting Started with Containers using Docker"
+    },{
+        "labId": "cicd-intro",
+        "title": "Automate code changes, testing, packaging and production deployments."
+    }
+    ],
+    "authors": [{
+        "name": "Matt Johnson",
+        "email": "matjohn2@cisco.com"
+        }],
+    "byod": true,
+    "active": true
+}
