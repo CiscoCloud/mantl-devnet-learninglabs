@@ -13,13 +13,17 @@
         "title": "Docker"
     }],
     "files": [{
-        "title": "1.md"
+        "title": "Access Cisco Container Platform",
+        "file": "1.md"
     }, {
-        "title": "2.md"
+        "title": "Cisco Container Platform APIs",
+        "file": "2.md"
     }, {
-        "title": "3.md"
+        "title": "Cluster Creation via API",
+        "file": "3.md"
     }, {
-        "title": "4.md"
+        "title": "What just happened?",
+        "file": "4.md"
     }],
     "related": [{
         "labId": "docker-101",
