@@ -15,11 +15,14 @@
         "title": "Docker"
     }],
     "files": [{
-        "title": "1.md"
+        "title": "Introduction to CI/CD",
+        "file": "1.md"
     }, {
-        "title": "2.md"
+        "title": "The Tools of CI/CD",
+        "file": "2.md"
     }, {
-        "title": "3.md"
+        "title": "CI/CD - Making Changes!",
+        "file": "3.md"
     }],
     "related": [{
         "labId": "docker-101",
