@@ -1,6 +1,6 @@
 {
     "labId": "docker-201",
-    "title": "Docker 201",
+    "title": "Advanced Docker features",
     "slug": "Explore advanced Docker features and become an expert on containers!",
     "time": "40",
     "tags": [{
@@ -15,19 +15,24 @@
         "title": "Docker"
     }],
     "files": [{
-        "title": "1.md"
+        "title": "Advanced Docker features",
+        "file": "1.md"
     }, {
-        "title": "2.md"
+        "title": "Build your own images",
+        "file": "2.md"
     }, {
-        "title": "3.md"
+        "title": "Networking for containers",
+        "file": "3.md"
     }, {
-        "title": "4.md"
+        "title": "Docker Compose",
+        "file": "4.md"
     }, {
-        "title": "5.md"
+        "title": "Docker Swarm",
+        "file": "5.md"
     }],
     "related": [{
         "labId": "docker-101",
-        "title": "Docker 101: Use docker to build and deploy your first container image."
+        "title": "Docker 101: Use Docker to build and deploy your first container image."
     }
     ],
     "authors": [{
