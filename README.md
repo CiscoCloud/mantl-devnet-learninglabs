@@ -2,7 +2,7 @@
 
 These self-paced interactive tutorials provide instructions for developers to deploy applications in Marathon, which is running inside of Mesos (as a Mesos framework).
 
-We write these labs for display within the [Cisco DevNet Learning Labs system](https://learninglabs.cisco.com).
+We write these labs for display within the [Cisco DevNet Learning Labs system](https://developer.cisco.com/learning).
 
 Contributions are welcome, and we are glad to review changes through pull requests. See [contributing.md](contributing.md) for details.
 
