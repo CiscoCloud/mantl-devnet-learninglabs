@@ -1,0 +1,34 @@
+{
+    "labId": "devnet-at-next19",
+    "title": "DEVNET at Google NEXT!",
+    "slug": "Lend DEVNET 5 minuites as we introduce ourselves and give you an overview of what we've got cooking at Google NEXT San Francisco this week!",
+    "time": "5",
+    "tags": [{
+        "title": "Cloud"
+    }, {
+        "title": "Microservices"
+    }, {
+        "title": "Edge"
+    }, {
+        "title": "Google"
+    }, {
+        "title": "Kubernetes"
+    }, {
+        "title": "Google NEXT"
+    }],
+    "files": [{
+        "title": "Introducing DEVNET",
+        "file": "1.md"
+    }],
+    "related": [{
+        "labId": "CiscoContainerPlatform-101",
+        "title": "Get hands on with Cisco Container Platform for on-premise, hybrid and edge turnkey kubernetes deployments."
+    }
+    ],
+    "authors": [{
+        "name": "Matt Johnson",
+        "email": "matjohn2@cisco.com"
+        }],
+    "byod": true,
+    "active": true
+}
