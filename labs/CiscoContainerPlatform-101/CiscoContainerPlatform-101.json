@@ -1,7 +1,7 @@
 {
     "labId": "CiscoContainerPlatform-101",
-    "title": "A Hands on introduction to the Cisco Container Platform v2.2.2",
-    "slug": "UPDATED to CCP v2.2.2! automatically provision and use a kubernetes clusters with Cisco Container Platform",
+    "title": "A hands-on introduction to the Cisco Container Platform v2.2.2",
+    "slug": "UPDATED to CCP v2.2.2! Automatically provision and use Kubernetes clusters with Cisco Container Platform.",
     "time": "30",
     "tags": [{
         "title": "Kubernetes"
@@ -13,16 +13,16 @@
         "title": "Docker"
     }],
     "files": [{
-        "title": "Access Cisco Container Platform",
+        "title": "Step 1: Access Cisco Container Platform",
         "file": "1.md"
     }, {
-        "title": "Cisco Container Platform APIs",
+        "title": "Step 2: Provider Settings and VIP Pools",
         "file": "2.md"
     }, {
-        "title": "Cluster Creation via API",
+        "title": "Step 3: API Cluster Creation",
         "file": "3.md"
     }, {
-        "title": "What just happened?",
+        "title": "Step 4: Testing our deployed Owncloud App!",
         "file": "4.md"
     }],
     "related": [{

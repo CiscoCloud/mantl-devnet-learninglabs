@@ -1,6 +1,6 @@
 {
     "labId": "microservices-overview",
-    "title": "Microservices Overview",
+    "title": "Microservices overview",
     "slug": "Learn about microservices, containers, and cloud native applications",
     "time": "30",
     "tags": [{
@@ -15,24 +15,24 @@
         "title": "Beginner"
     }],
     "files": [{
-        "title": "1.md"
+        "title": "Microservices overview",
+        "file": "1.md"
     }, {
-        "title": "2.md"
+        "title": "What are microservices?",
+        "file": "2.md"
     }],
     "related": [{
         "labId": "containers-101",
         "title": "Just what are containers anyway?."
     },{
         "labId": "docker-101",
-        "title": "Docker: Building and deploying your first docker container."
+        "title": "Docker: Building and deploying your first Docker container."
     },{
         "labId": "kubernetes-101",
-        "title": "Kubernetes: Deploying docker containers into a Kubernetes cluster."
+        "title": "Kubernetes: Deploying Docker containers into a Kubernetes cluster."
     }
     ],
     "authors": [{
-        "name": "Ashley Roach",
-        "email": "asroach@cisco.com"}, {
         "name": "Matt Johnson",
         "email": "matjohn2@cisco.com"
         }],
