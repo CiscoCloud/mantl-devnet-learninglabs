@@ -10,6 +10,8 @@ Once approved, Cisco DevNet reviewers then create a release to publish through o
 
 The goal of these learning labs is to ensure a 'hands-on' learning approach rather than theory or instructions.
 
+> **Note**: The `mantl-app` and `mantl-101` labs are being removed due to product EOL.
+
 ## About these Learning Labs
 
 These labs teach how to:
