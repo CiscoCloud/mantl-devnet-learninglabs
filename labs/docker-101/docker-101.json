@@ -26,6 +26,10 @@
     }, {
         "title": "Build a web server container",
         "file": "4.md"
+    },
+      {
+        "title": "How to remove existing Docker Container and Images",
+        "file": "5.md"
     }],
     "related": [{
         "labId": "kubernetes-101",
