@@ -1,7 +1,7 @@
 {
     "labId": "CiscoContainerPlatform-101",
-    "title": "A hands-on introduction to the Cisco Container Platform v3.1",
-    "slug": "UPDATED to CCP v3.1! Automatically provision and use Kubernetes clusters with Cisco Container Platform.",
+    "title": "A hands-on introduction to the Cisco Container Platform",
+    "slug": "UPDATED to CCP v5.1! Automatically provision and use Kubernetes clusters with Cisco Container Platform.",
     "time": "30",
     "tags": [{
         "title": "Kubernetes"
