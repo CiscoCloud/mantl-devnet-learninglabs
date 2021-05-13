@@ -10,8 +10,6 @@ Once approved, Cisco DevNet reviewers then create a release to publish through o
 
 The goal of these learning labs is to ensure a 'hands-on' learning approach rather than theory or instructions.
 
-## **Note**: The `mantl-app` and `mantl-101` labs are being removed due to product EOL.
-
 ## About these Learning Labs
 
 These labs teach how to:
@@ -27,19 +25,7 @@ If you need more help, you can reach out to DevNet through one of our [support o
 
 ## Preview Learning Lab Markdown locally
 
-You can preview how the Markdown renders by using a pre-built Docker image. The `Makefile` in the root of the repository lets you run `make preview` to view the output HTML.
-
-1. Make sure you have Docker installed locally. If not, [install Docker](https://docs.docker.com/install/) for your operating system.
-   ```
-   $ docker -v
-   ```
-1. In the root of the repository, run:
-   ```
-   $ make preview
-   ```
-1. Open a browser window with the URL: `http://localhost:9000`.
-1. Click a folder to find the Markdown file you want to preview.
-1. When you are done previewing, type `Ctrl+C` to stop running the Docker container.
+Refer to the instruction for your text editor for Markdown previewing. For example, [Markdown and Visual Studio Code](https://code.visualstudio.com/Docs/languages/markdown) describes how to configure Markdown extensions. 
 
 ## Contributor guidelines
 
