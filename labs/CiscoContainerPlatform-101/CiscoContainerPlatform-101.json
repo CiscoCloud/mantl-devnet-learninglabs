@@ -1,0 +1,42 @@
+{
+    "labId": "CiscoContainerPlatform-101",
+    "title": "A hands-on introduction to the Cisco Container Platform",
+    "slug": "UPDATED to CCP v5.1! Automatically provision and use Kubernetes clusters with Cisco Container Platform.",
+    "time": "30",
+    "tags": [{
+        "title": "Kubernetes"
+    }, {
+        "title": "Automation"
+    }, {
+        "title": "Containers"
+    }, {
+        "title": "Docker"
+    }],
+    "files": [{
+        "title": "Step 1: Access Cisco Container Platform",
+        "file": "1.md"
+    }, {
+        "title": "Step 2: Provider Settings and VIP Pools",
+        "file": "2.md"
+    }, {
+        "title": "Step 3: API Cluster Creation",
+        "file": "3.md"
+    }, {
+        "title": "Step 4: Testing our deployed OwnCloud App!",
+        "file": "4.md"
+    }],
+    "related": [{
+        "labId": "docker-101",
+        "title": "Getting Started with Containers using Docker"
+    },{
+        "labId": "cicd-intro",
+        "title": "Automate code changes, testing, packaging and production deployments."
+    }
+    ],
+    "authors": [{
+        "name": "Matt Johnson",
+        "email": "matjohn2@cisco.com"
+        }],
+    "byod": true,
+    "active": true
+}

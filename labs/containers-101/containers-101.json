@@ -1,6 +1,6 @@
 {
-    "labId": "Containers-101",
-    "title": "Containers 101",
+    "labId": "containers-101",
+    "title": "Containers Overview",
     "slug": "The buzzword 'Container', explained.",
     "time": "10",
     "tags": [{
@@ -11,9 +11,11 @@
         "title": "Beginner"
     }],
     "files": [{
-        "title": "1.md"
+        "title": "Introducing containers",
+        "file": "1.md"
         }, {
-        "title": "2.md"
+        "title": "Benefits of containers",
+        "file": "2.md"
     }],
     "related": [{
         "labId": "docker-101",
@@ -22,8 +24,8 @@
         "labId": "microservices-overview",
         "title": "Containers are not Microservices, but they do go hand in hand! Learn more here."
         }, {
-        "labId": "kubernetes-101",
-        "title": "Kubernetes: Deploying docker containers into a Kubernetes cluster."
+        "labId": "CiscoContainerPlatform-101",
+        "title": "Automatically provision and use Kubernetes clusters with Cisco Container Platform."
     }],
     "authors": [{
         "name": "Matt Johnson",

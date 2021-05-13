@@ -1,23 +1,61 @@
-# mantl-devnet-learninglabs
-Self paced interactive Learning Labs for [DevNet Learning Labs](https://developer.cisco.com/learning).
+## Cisco DevNet Learning Labs: mantl-devnet-learninglabs
 
-## Mantl: Deploying applications into Marathon
+These self-paced interactive tutorials provide instructions for developers to deploy applications in Marathon, which is running inside of Mesos (as a Mesos framework).
 
-Learn how to deploy applications in Marathon, which is running inside of Mesos (as a Mesos framework). First we will create a very basic web server. Next, we will pull down a Docker container and deploy it on Marathon. In each case, we will be using the Marathon REST API to manage the application lifecycles.
+We write these labs for display within the [Cisco DevNet Learning Labs system](https://developer.cisco.com/learning).
 
+Contributions are welcome, and we are glad to review changes through pull requests. See [contributing.md](contributing.md) for details.
 
-## Mantl 101
+Once approved, Cisco DevNet reviewers then create a release to publish through our Learning Labs system.
 
-### Status
-Incomplete (blocked).
-Bug in Vagrant 1.8.0 breaks rsync compatability when running on Windows.
-https://github.com/mitchellh/vagrant/issues/6702
+The goal of these learning labs is to ensure a 'hands-on' learning approach rather than theory or instructions.
 
-Once this is solved, the the fixed Vagrant version can be requested in the DevNet LearningLabs image along with other tools for the lab (below)
+## About these Learning Labs
 
-### Larninglabs (physical/atevent requirements)
+These labs teach how to:
+* Have a basic understanding of microservices, containers, and cloud-native applications.
+* Deploy applications in Marathon.
+* Deploy a Mantl.io Container cluster onto your local machine.
+* Have a basic understanding of containers.
+* Use Docker, a common toolchain for building, sharing and deploying containers.
+* Explore advanced Docker features for containers.
+* Have a basic understanding of Continuous Integration (CI) and Continuous Deployment (CD) techniques and principals.
 
-- Virtualbox - Already installed
-- Cygwin - With ssh,rsync,git,curl - Needs requesting
-- Vagrant - Whatever version fixes #6702 - Needs requesting
+If you need more help, you can reach out to DevNet through one of our [support options](https://developer.cisco.com/site/devnet/support/).
 
+## Preview Learning Lab Markdown locally
+
+Refer to the instruction for your text editor for Markdown previewing. For example, [Markdown and Visual Studio Code](https://code.visualstudio.com/Docs/languages/markdown) describes how to configure Markdown extensions. 
+
+## Contributor guidelines
+
+These learning modules are for public consumption, so you must ensure that you have the rights to any content that you contribute.
+
+Write your content in Markdown. DevNet staff reviews content according to the [Cisco Style Guide](http://www-author.cisco.com/c/en/us/td/docs/general/style/guide/Latest/stylegd.html). (Link available on Cisco VPN only.)
+
+#### Publishing requirements
+
+To create and publish a new lab, take the following steps:
+- Add a new folder under `labs`.
+- Create a JSON file with the same name as the `labs/`_folder_ name.
+- Create markdown files named 1.md, 2.md, and so on; refer to those files in the `labs/`_folder_ JSON file.
+- Ensure that the JSON file contains appropriate page titles and file references.
+- Send a pull request to get the files committed and merged to `master` by a DevNet reviewer.
+
+A DevNet reviewer then creates a release on the repository with the latest `master` and publishes through the admin interface.
+
+#### Editors
+
+You can write Markdown in a plain text editor, and desktop and Web-based options allow you to simultaneously write and preview your work. We recommend Visual Studio Code [Download](https://code.visualstudio.com/) for these reasons:
+- Lightweight environment for coding (or writing Markdown).
+- Available on macOS, Linux, or Windows.
+- Github Client integration.
+- Great Markdown preview features native in the editor.
+- Intuitive operation and structure.
+
+You can validate a JSON file by using the [online formatter and validator](https://jsonformatter.curiousconcept.com).
+
+## Getting involved
+
+* If you'd like to contribute to an existing lab, refer to [contributing.md](contributing.md).
+* If you're interested in creating a new Cisco DevNet Learning Lab, please contact a DevNet administrator for guidance.

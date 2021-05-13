@@ -1,7 +1,7 @@
 {
     "labId": "docker-101",
     "title": "Docker 101",
-    "slug": "Use docker to build and deploy your first container image.",
+    "slug": "Use Docker to build and deploy your first container image.",
     "time": "40",
     "tags": [{
         "title": "Cloud"
@@ -15,17 +15,29 @@
         "title": "Docker"
     }],
     "files": [{
-        "title": "1.md"
+        "title": "Docker 101",
+        "file": "1.md"
     }, {
-        "title": "2.md"
+        "title": "Get or create a Docker image",
+        "file": "2.md"
     }, {
-        "title": "3.md"
+        "title": "Build a Docker image",
+        "file": "3.md"
     }, {
-        "title": "4.md"
+        "title": "Build a web server container",
+        "file": "4.md"
+    },
+      {
+        "title": "How to remove existing Docker Container and Images",
+        "file": "5.md"
     }],
     "related": [{
         "labId": "kubernetes-101",
         "title": "Kubernetes: Deploying docker containers into a Kubernetes cluster."
+    },
+    {
+        "labId": "CiscoContainerPlatform-101",
+        "title": "Automatically provision and use Kubernetes clusters with Cisco Container Platform."
     }
     ],
     "authors": [{
